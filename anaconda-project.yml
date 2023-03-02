@@ -105,7 +105,7 @@ env_specs:
           - fastapi
           - uvicorn[standard]
           - anaconda.enterprise.server.common.sdk
-          - anaconda.enterprise.server.contracts
+          - anaconda.enterprise.server.contracts>=0.9.3
     development:
         description: Development Environment
         packages:
@@ -126,4 +126,4 @@ env_specs:
           - fastapi
           - uvicorn[standard]
           - anaconda.enterprise.server.common.sdk
-          - anaconda.enterprise.server.contracts
+          - anaconda.enterprise.server.contracts>=0.9.3
