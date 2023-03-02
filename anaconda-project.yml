@@ -17,13 +17,13 @@ commands:
 
   RunnerAPI:
     # TODO: migrate to default after initial develop is complete
-    env_spec: development
+    env_spec: default
     unix: python -m src.anaconda.enterprise.mlflow.backend.runner.handler --activity server
     supports_http_options: true
 
   Worker:
     # TODO: migrate to default after initial develop is complete
-    env_spec: development
+    env_spec: default
     unix: python -m src.anaconda.enterprise.mlflow.backend.runner.handler --activity worker
 
   #
@@ -31,54 +31,54 @@ commands:
   #
 
   bash:
-    env_spec: development
+    env_spec: default
     unix: bash
 
   test:unit:
-    env_spec: development
+    env_spec: default
     unix: coverage run --append --rcfile=.coveragerc -m unittest discover test/unit
 
   coverage:
-    env_spec: development
+    env_spec: default
     unix: |
       coverage report
       coverage html
       coverage xml
 
   test:integration:
-    env_spec: development
+    env_spec: default
     unix: python -m unittest discover test/integration
 
   clean:
-    env_spec: development
+    env_spec: default
     unix: |
       rm -rf .coverage htmlcov docs/build
 
   lint:
-    env_spec: development
+    env_spec: default
     unix: |
       pylint src
       isort --check --diff .
       black --line-length=120 --target-version=py310 --check --diff .
 
   lint:fix:
-    env_spec: development
+    env_spec: default
     unix: |
       isort .
       black --line-length=120 --target-version=py310 .
 
   build:docs:quickstart:
-    env_spec: development
+    env_spec: default
     unix: |
       sphinx-quickstart docs --sep --project anaconda.enterprise.mlflow.backend.runner
 
   build:apidocs:
-    env_spec: development
+    env_spec: default
     unix: |
       sphinx-apidoc -f -o docs/source/runner src/anaconda/enterprise/mlflow/backend/runner
 
   build:docs:
-    env_spec: development
+    env_spec: default
     unix: |
       rm -rf docs/build docs/runner && cp -rf src/anaconda/enterprise/mlflow/backend/runner docs && cd docs && make clean && make html
 
@@ -102,7 +102,10 @@ env_specs:
           - mlflow=2.0.1
           - ae5-tools
           - ipykernel
-
+          - fastapi
+          - uvicorn[standard]
+          - anaconda.enterprise.server.common.sdk
+          - anaconda.enterprise.server.contracts
     development:
         description: Development Environment
         packages:

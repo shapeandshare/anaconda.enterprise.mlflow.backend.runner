@@ -91,13 +91,14 @@ class ExecuteCommand(BaseModel):
         # 4. Invoke job entry point with needed details
         job_create_params: Dict = {
             "ident": ExecuteCommand.get_project_id(),
-            "command": "Run",
+            "command": "Worker",
             "variables": {"MANIFEST_FILE_PATH": (request_cache_path / "manifest.json").as_posix()},
             "run": True,
         }
         try:
             response: JobCreateResponse = self.ae_session.job_create(**job_create_params)
         except Exception as error:
+            print(error)
             message: Dict = {"message": "Unable to start job", "request_id": request_id, "params": job_create_params}
 
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=message) from error
@@ -107,9 +108,12 @@ class ExecuteCommand(BaseModel):
     @staticmethod
     def get_project_id() -> str:
         try:
-            return f"a0-{demand_env_var(name='PERSISTENCE_ID')}"
+            # Sample:
+            # APP_SOURCE=http://anaconda-enterprise-ap-storage/projects/f2dff223d2cc40a2b7f80a1318aceb5d/archive/0.0.1
+            return demand_env_var(name='APP_SOURCE').split(sep="/")[4]
+
         except EnvironmentVariableNotFoundError as error:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="Unable to determine persistence id for project. Not running within Anaconda Enterprise?",
+                detail="Unable to determine app source for project. Not running within Anaconda Enterprise?",
             ) from error
