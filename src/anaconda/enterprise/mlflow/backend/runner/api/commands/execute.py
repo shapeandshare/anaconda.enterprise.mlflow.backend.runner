@@ -96,7 +96,9 @@ class ExecuteCommand(BaseModel):
             "run": True,
         }
         try:
+            print(job_create_params)
             response: JobCreateResponse = self.ae_session.job_create(**job_create_params)
+            print(response.dict())
         except Exception as error:
             print(error)
             message: Dict = {"message": "Unable to start job", "request_id": request_id, "params": job_create_params}
