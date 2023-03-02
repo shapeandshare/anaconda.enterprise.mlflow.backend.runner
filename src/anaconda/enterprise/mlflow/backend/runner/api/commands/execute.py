@@ -110,7 +110,7 @@ class ExecuteCommand(BaseModel):
         try:
             # Sample:
             # APP_SOURCE=http://anaconda-enterprise-ap-storage/projects/f2dff223d2cc40a2b7f80a1318aceb5d/archive/0.0.1
-            return demand_env_var(name='APP_SOURCE').split(sep="/")[4]
+            return f"a0-{demand_env_var(name='APP_SOURCE').split(sep='/')[4]}"
 
         except EnvironmentVariableNotFoundError as error:
             raise HTTPException(
