@@ -90,7 +90,7 @@ class ExecuteCommand(BaseModel):
 
         # 4. Invoke job entry point with needed details
         job_create_params: Dict = {
-            "name": "RunnerAPI-Worker",
+            "name": request_id,
             "ident": ExecuteCommand.get_project_id(),
             "command": "Worker",
             "variables": {"MANIFEST_FILE_PATH": (request_cache_path / "manifest.json").as_posix()},
