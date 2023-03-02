@@ -6,9 +6,9 @@ description: |
 
 variables:
   RUNNER_PERSISTENT_STORAGE: data
-  AE_HOSTNAME:
-  AE_USERNAME:
-  AE_AUTH:
+#  AE_HOSTNAME:
+#  AE_USERNAME:
+#  AE_AUTH:
 
 commands:
   #

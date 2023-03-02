@@ -1,7 +1,10 @@
 import shlex
 import subprocess
+import json
+from typing import Dict
 
 from anaconda.enterprise.server.contracts import BaseModel
+from anaconda.enterprise.server.common.sdk import demand_env_var
 
 from .contracts.dto.launch_parameters import LaunchParameters
 from .contracts.types.activity import ActivityType
@@ -56,4 +59,10 @@ class AEMLFlowBackendRunnerController(BaseModel):
         AEMLFlowBackendRunnerController._process_launch_wait(shell_out_cmd=cmd)
 
     def launch_worker(self):
-        pass
+        manifest_path: str = demand_env_var(name="MANIFEST_FILE_PATH")
+        print(f"Launching worker with manifest: {manifest_path}")
+        with open(file=manifest_path, mode="r", encoding="utf-8") as file:
+            manifest_data: Dict = json.load(file)
+            print(manifest_data)
+
+
