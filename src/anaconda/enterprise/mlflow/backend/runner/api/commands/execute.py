@@ -97,7 +97,8 @@ class ExecuteCommand(BaseModel):
         }
         try:
             print(job_create_params)
-            response: JobCreateResponse = self.ae_session.job_create(**job_create_params)
+            response_dict: dict = self.ae_session.job_create(**job_create_params)
+            response: JobCreateResponse = JobCreateResponse.parse_obj(response_dict)
             print(response.dict())
         except Exception as error:
             print(error)
