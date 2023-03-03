@@ -31,54 +31,54 @@ commands:
   #
 
   bash:
-    env_spec: default
+    env_spec: development
     unix: bash
 
   test:unit:
-    env_spec: default
+    env_spec: development
     unix: coverage run --append --rcfile=.coveragerc -m unittest discover test/unit
 
   coverage:
-    env_spec: default
+    env_spec: development
     unix: |
       coverage report
       coverage html
       coverage xml
 
   test:integration:
-    env_spec: default
+    env_spec: development
     unix: python -m unittest discover test/integration
 
   clean:
-    env_spec: default
+    env_spec: development
     unix: |
       rm -rf .coverage htmlcov docs/build
 
   lint:
-    env_spec: default
+    env_spec: development
     unix: |
       pylint src
       isort --check --diff .
       black --line-length=120 --target-version=py310 --check --diff .
 
   lint:fix:
-    env_spec: default
+    env_spec: development
     unix: |
       isort .
       black --line-length=120 --target-version=py310 .
 
   build:docs:quickstart:
-    env_spec: default
+    env_spec: development
     unix: |
       sphinx-quickstart docs --sep --project anaconda.enterprise.mlflow.backend.runner
 
   build:apidocs:
-    env_spec: default
+    env_spec: development
     unix: |
       sphinx-apidoc -f -o docs/source/runner src/anaconda/enterprise/mlflow/backend/runner
 
   build:docs:
-    env_spec: default
+    env_spec: development
     unix: |
       rm -rf docs/build docs/runner && cp -rf src/anaconda/enterprise/mlflow/backend/runner docs && cd docs && make clean && make html
 
