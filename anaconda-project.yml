@@ -9,6 +9,9 @@ variables:
 #  AE_HOSTNAME:
 #  AE_USERNAME:
 #  AE_AUTH:
+  MLFLOW_TRACKING_URI: http://0.0.0.0:8086/
+  MLFLOW_REGISTRY_URI: http://0.0.0.0:8086/
+  MLFLOW_TRACKING_TOKEN: SECRET-TOKEN
 
 commands:
   #

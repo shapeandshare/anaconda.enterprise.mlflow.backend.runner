@@ -88,12 +88,19 @@ class ExecuteCommand(BaseModel):
         with open(file=(request_cache_path / "manifest.json").as_posix(), mode="w", encoding="utf-8") as file:
             file.write(json.dumps(manifest))
 
+        # Setup job variables
+        # TODO: black listed variable list (mlflow, or ae configs)?
+        job_env_variables: Dict[str, str] = {
+            **request.variables,
+            "MANIFEST_FILE_PATH": (request_cache_path / "manifest.json").as_posix()
+        }
+
         # 4. Invoke job entry point with needed details
         job_create_params: Dict = {
             "name": request_id,
             "ident": ExecuteCommand.get_project_id(),
             "command": "Worker",
-            "variables": {"MANIFEST_FILE_PATH": (request_cache_path / "manifest.json").as_posix()},
+            "variables": job_env_variables,
             "run": True,
         }
         try:
