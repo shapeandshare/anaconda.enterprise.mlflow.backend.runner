@@ -92,7 +92,7 @@ class ExecuteCommand(BaseModel):
         # TODO: black listed variable list (mlflow, or ae configs)?
         job_env_variables: Dict[str, str] = {
             **request.variables,
-            "MANIFEST_FILE_PATH": (request_cache_path / "manifest.json").as_posix()
+            "MANIFEST_FILE_PATH": (request_cache_path / "manifest.json").as_posix(),
         }
 
         # 4. Invoke job entry point with needed details

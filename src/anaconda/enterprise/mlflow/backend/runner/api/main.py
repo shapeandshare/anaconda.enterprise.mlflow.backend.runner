@@ -55,7 +55,7 @@ def health_plain() -> bool:
     return True
 
 
-@app.post(path="/execute", response_model=ExecuteResponse, status_code=status.HTTP_201_CREATED)
+@app.post(path="api/v1/execute", response_model=ExecuteResponse, status_code=status.HTTP_201_CREATED)
 def execute(request: ExecuteRequest) -> ExecuteResponse:
     """
     Post Execution Request
