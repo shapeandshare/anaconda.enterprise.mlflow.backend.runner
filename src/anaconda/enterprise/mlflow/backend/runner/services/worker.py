@@ -2,7 +2,7 @@ import shlex
 import shutil
 import subprocess
 
-from ..contracts.requests.execute import ExecuteRequest
+from ..sdk.contracts.requests.execute import ExecuteRequest
 
 
 class WorkerService:

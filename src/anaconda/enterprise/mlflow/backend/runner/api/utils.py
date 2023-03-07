@@ -4,7 +4,7 @@ from ae5_tools.api import AEUserSession
 
 from anaconda.enterprise.server.common.sdk import demand_env_var
 
-from ..contracts.dto.client_options import ClientOptions
+from ..sdk.contracts.dto.client_options import ClientOptions
 
 
 def get_ae_user_session(options: Optional[ClientOptions] = None) -> AEUserSession:

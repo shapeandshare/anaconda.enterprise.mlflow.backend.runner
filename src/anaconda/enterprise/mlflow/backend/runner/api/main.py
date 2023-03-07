@@ -5,8 +5,8 @@ from fastapi import FastAPI, status
 from starlette.exceptions import HTTPException
 from starlette.middleware.cors import CORSMiddleware
 
-from ..contracts.requests.execute import ExecuteRequest
-from ..contracts.responses.execute import ExecuteResponse
+from ..sdk.contracts.requests.execute import ExecuteRequest
+from ..sdk.contracts.responses.execute import ExecuteResponse
 from ..services.tar import TarService
 from .commands.execute import ExecuteCommand
 from .utils import get_ae_user_session

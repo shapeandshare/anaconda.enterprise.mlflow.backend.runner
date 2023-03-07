@@ -1,7 +1,7 @@
 import tarfile
 from pathlib import Path
 
-from ..contracts.errors.tar import TarServiceError
+from ..sdk.contracts.errors.tar import TarServiceError
 
 
 class TarService:

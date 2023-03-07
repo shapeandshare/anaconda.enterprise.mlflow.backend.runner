@@ -6,9 +6,9 @@ from typing import Dict
 from anaconda.enterprise.server.common.sdk import demand_env_var
 from anaconda.enterprise.server.contracts import BaseModel
 
-from .contracts.dto.launch_parameters import LaunchParameters
-from .contracts.requests.execute import ExecuteRequest
-from .contracts.types.activity import ActivityType
+from .sdk.contracts.dto.launch_parameters import LaunchParameters
+from .sdk.contracts.requests.execute import ExecuteRequest
+from .sdk.contracts.types.activity import ActivityType
 from .services.worker import WorkerService
 
 

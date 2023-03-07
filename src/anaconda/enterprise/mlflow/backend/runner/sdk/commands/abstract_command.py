@@ -9,11 +9,11 @@ from requests import Response, Session
 from anaconda.enterprise.server.common.sdk import demand_env_var
 from anaconda.enterprise.server.contracts import BaseModel
 
-from ...contracts.dto.command_options import CommandOptions
-from ...contracts.dto.wrapped_request import WrappedRequest
-from ...contracts.errors.exceeded_retry_count_error import ExceededRetryCountError
-from ...contracts.errors.request_failure_error import RequestFailureError
-from ...contracts.types.request_verb import RequestVerb
+from ..contracts.dto.command_options import CommandOptions
+from ..contracts.dto.wrapped_request import WrappedRequest
+from ..contracts.errors.exceeded_retry_count_error import ExceededRetryCountError
+from ..contracts.errors.request_failure_error import RequestFailureError
+from ..contracts.types.request_verb import RequestVerb
 
 
 class AbstractCommand(BaseModel):

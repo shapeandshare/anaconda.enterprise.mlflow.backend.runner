@@ -2,11 +2,11 @@ from starlette import status
 
 from anaconda.enterprise.server.common.sdk import demand_env_var
 
-from ...contracts.dto.request_status_codes import RequestStatusCodes
-from ...contracts.dto.wrapped_request import WrappedRequest
-from ...contracts.requests.execute import ExecuteRequest
-from ...contracts.responses.execute import ExecuteResponse
-from ...contracts.types.request_verb import RequestVerb
+from ..contracts.dto.request_status_codes import RequestStatusCodes
+from ..contracts.dto.wrapped_request import WrappedRequest
+from ..contracts.requests.execute import ExecuteRequest
+from ..contracts.responses.execute import ExecuteResponse
+from ..contracts.types.request_verb import RequestVerb
 from .abstract_command import AbstractCommand
 
 
