@@ -5,17 +5,12 @@ description: |
   Training jobs are spawned off this template.
 
 variables:
+  # Server-Side Configuration
   RUNNER_PERSISTENT_STORAGE: data
+
+  # Client-Side Configuration
   RUNNER_AUTH_TOKEN: SECRET-RUNNER-AUTH-TOKEN
   RUNNER_URI: http://0.0.0.0:5000/
-
-#  AE_HOSTNAME:
-#  AE_USERNAME:
-#  AE_AUTH:
-  MLFLOW_TRACKING_URI: http://0.0.0.0:8086/
-  MLFLOW_REGISTRY_URI: http://0.0.0.0:8086/
-  MLFLOW_TRACKING_TOKEN: SECRET-TOKEN
-
 
 commands:
   #
@@ -23,13 +18,11 @@ commands:
   #
 
   RunnerAPI:
-    # TODO: migrate to default after initial develop is complete
     env_spec: default
     unix: python -m src.anaconda.enterprise.mlflow.backend.runner.handler --activity server
     supports_http_options: true
 
   Worker:
-    # TODO: migrate to default after initial develop is complete
     env_spec: default
     unix: python -m src.anaconda.enterprise.mlflow.backend.runner.handler --activity worker
 
@@ -106,7 +99,6 @@ env_specs:
         description: Default Environment
         packages:
           - python=3.10
-          - mlflow=2.0.1
           - ae5-tools
           - ipykernel
           - fastapi
@@ -117,7 +109,6 @@ env_specs:
         description: Development Environment
         packages:
           - python=3.10
-          - mlflow=2.0.1
           - ae5-tools
           - ipykernel
           - isort

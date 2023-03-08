@@ -5,8 +5,8 @@ from argparse import ArgumentParser, Namespace
 
 from anaconda.enterprise.server.common.sdk import load_ae5_user_secrets
 
+from .contracts.dto.launch_parameters import LaunchParameters
 from .controller import AEMLFlowBackendRunnerController
-from .sdk.contracts.dto.launch_parameters import LaunchParameters
 
 if __name__ == "__main__":
     # This function is meant to provide a handler mechanism between the AE5 deployment arguments

@@ -11,7 +11,7 @@ from starlette.exceptions import HTTPException
 from anaconda.enterprise.server.common.sdk import EnvironmentVariableNotFoundError, demand_env_var
 from anaconda.enterprise.server.contracts import BaseModel, JobCreateResponse
 
-from ...sdk.contracts.errors.tar import TarServiceError
+from src.anaconda.enterprise.mlflow.backend.runner.contracts.errors.tar_error import TarServiceError
 from ...sdk.contracts.requests.execute import ExecuteRequest
 from ...sdk.contracts.responses.execute import ExecuteResponse
 from ...services.tar import TarService

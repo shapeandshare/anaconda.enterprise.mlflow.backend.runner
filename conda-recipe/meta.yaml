@@ -1,0 +1,28 @@
+{% set name = "anaconda.enterprise.mlflow.backend.runner" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  path: ../
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
+
+requirements:
+  host:
+    - python>=3.8
+    - setuptools
+  run:
+    - python>=3.8
+
+about:
+  home: https://github.com/shapeandshare/anaconda.enterprise.mlflow.backend.runner
+  summary: "MLFlow Backend For Anaconda Enterprise"
+  license: BSD
+  license_file: LICENSE
