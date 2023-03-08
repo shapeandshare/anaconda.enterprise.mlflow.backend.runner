@@ -16,7 +16,7 @@ class ExecuteCommand(AbstractCommand):
     def execute(self, request: ExecuteRequest) -> ExecuteResponse:
         request: WrappedRequest = WrappedRequest(
             verb=RequestVerb.POST,
-            url=f"https://{demand_env_var(name='RUNNER_HOSTNAME')}/api/v1/execute",
+            url=f"{demand_env_var(name='RUNNER_URI')}/api/v1/execute",
             json=request.dict(by_alias=False),
             statuses=RequestStatusCodes(
                 allow=[status.HTTP_201_CREATED], reauth=[status.HTTP_401_UNAUTHORIZED], retry=[]
